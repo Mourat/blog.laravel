@@ -12,9 +12,11 @@ const mix = require('laravel-mix');
  */
 
 /* Styles start */
+mix.sass('resources/assets/admin/css/custom.scss', '../resources/assets/admin/css/custom.css')
 mix.styles([
     'resources/assets/admin/plugins/fontawesome-free/css/all.css',
     'resources/assets/admin/css/adminlte.css',
+    'resources/assets/admin/css/custom.css',
 ], 'public/assets/admin/css/admin.css');
 mix.copy('resources/assets/admin/css/adminlte.min.css.map', 'public/assets/admin/css/adminlte.min.css.map');
 mix.copy('resources/assets/admin/css/adminlte.css.map', 'public/assets/admin/css/adminlte.css.map');

@@ -35776,3 +35776,8 @@ a.text-muted:hover {
   color: #ffffff;
 }
 /*# sourceMappingURL=adminlte.css.map */
+.table th,
+.table td {
+  vertical-align: middle;
+}
+

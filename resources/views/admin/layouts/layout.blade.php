@@ -169,35 +169,29 @@
                          with font-awesome or any other icon font library -->
                     <li class="nav-item">
                         <a href="{{ route('admin.index') }}" class="nav-link">
-                            <i class="nav-icon fas fa-home"></i>
+                            <i class="nav-icon fas fa-home fa-fw"></i>
                             <p>Main</p>
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <i class="fas fa-archive fa-fw"></i>
                             <p>
-                                Dashboard
+                                Categories
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="../../index.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Dashboard v1</p>
+                                <a href="{{ route('categories.index') }}" class="nav-link">
+                                    <i class="fas fa-list fa-fw"></i>
+                                    <p>Categories</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../index2.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Dashboard v2</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="../../index3.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Dashboard v3</p>
+                                <a href="{{ route('categories.create') }}" class="nav-link">
+                                    <i class="fas fa-plus fa-fw"></i>
+                                    <p>New category</p>
                                 </a>
                             </li>
                         </ul>
@@ -230,6 +224,17 @@
 <!-- ./wrapper -->
 
 <script src="{{ asset('assets/admin/js/admin.js') }}"></script>
+
+<script>
+    $('.nav-sidebar a').each(function(){
+       let location = window.location.protocol + '//' + window.location.host + window.location.pathname;
+       let link = this.href;
+       if (link == location){
+           $(this).addClass('active');
+           $(this).closest('.has-treeview').addClass('menu-open');
+       }
+    });
+</script>
 </body>
 </html>
 
