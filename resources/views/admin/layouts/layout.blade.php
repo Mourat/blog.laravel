@@ -204,8 +204,30 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    @yield('content')
-    <!-- /.content-wrapper -->
+    <div class="content-wrapper">
+        <div class="container-fluid mt-3">
+                    @if ( $errors->any() )
+                        <div class="alert alert-danger">
+                            <div class="container">
+                                <ul class="list-unstyled mb-0">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    @endif
+                    @if ( session()->has('success') )
+                        <div class="alert alert-success">
+                            <div class="container">
+                                {{ session('success') }}
+                            </div>
+                        </div>
+                    @endif
+        </div>
+        @yield('content')
+        <!-- /.content-wrapper -->
+    </div>
 
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
