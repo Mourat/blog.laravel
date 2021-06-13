@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Category;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreCategory;
+use App\Http\Requests\StoreTag;
+use App\Tag;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class TagController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +17,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate(20);
-        return view('admin.categories.index', compact('categories'));
+        $tags = Tag::paginate(20);
+        return view('admin.tags.index', compact('tags'));
     }
 
     /**
@@ -27,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create');
+        return view('admin.tags.create');
     }
 
     /**
@@ -36,10 +37,10 @@ class CategoryController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function store(StoreCategory $request)
+    public function store(StoreTag $request)
     {
-        Category::create($request->all());
-        return redirect(route('categories.index'))->with('success', 'Category added successfully');
+        Tag::create($request->all());
+        return redirect(route('tags.index'))->with('success', 'Tag added successfully');
     }
 
     /**
@@ -50,8 +51,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);
-        return view('admin.categories.edit', compact('category'));
+        $tag = Tag::find($id);
+        return view('admin.tags.edit', compact('tag'));
     }
 
     /**
@@ -61,11 +62,11 @@ class CategoryController extends Controller
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function update(StoreCategory $request, $id)
+    public function update(StoreTag $request, $id)
     {
-        $category = Category::find($id);
-        $category->update($request->all());
-        return redirect(route('categories.index'))->with('success', 'Category modified successfully');
+        $tag = Tag::find($id);
+        $tag->update($request->all());
+        return redirect(route('tags.index'))->with('success', 'Tag modified successfully');
     }
 
     /**
@@ -76,7 +77,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        Category::destroy($id);
-        return redirect()->route('categories.index')->with('success', 'Category has been removed');
+        Tag::destroy($id);
+        return redirect()->route('tags.index')->with('success', 'Tag has been removed');
     }
 }

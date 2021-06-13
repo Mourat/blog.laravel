@@ -55,7 +55,8 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="{{ asset('assets/admin/img/user1-128x128.jpg') }}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                            <img src="{{ asset('assets/admin/img/user1-128x128.jpg') }}" alt="User Avatar"
+                                 class="img-size-50 mr-3 img-circle">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
                                     Brad Diesel
@@ -71,7 +72,8 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="{{ asset('assets/admin/img/user8-128x128.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                            <img src="{{ asset('assets/admin/img/user8-128x128.jpg') }}" alt="User Avatar"
+                                 class="img-size-50 img-circle mr-3">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
                                     John Pierce
@@ -87,7 +89,8 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="{{ asset('assets/admin/img/user3-128x128.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                            <img src="{{ asset('assets/admin/img/user3-128x128.jpg') }}" alt="User Avatar"
+                                 class="img-size-50 img-circle mr-3">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
                                     Nora Silvester
@@ -155,7 +158,8 @@
             <!-- Sidebar user (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="{{ asset('assets/admin/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+                    <img src="{{ asset('assets/admin/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
+                         alt="User Image">
                 </div>
                 <div class="info">
                     <a href="#" class="d-block">Alexander Pierce</a>
@@ -164,7 +168,8 @@
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
                     <li class="nav-item">
@@ -196,6 +201,29 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-tags"></i>
+                            <p>
+                                Tags
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('tags.index') }}" class="nav-link">
+                                    <i class="fas fa-list"></i>
+                                    <p>Tags</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('tags.create') }}" class="nav-link">
+                                    <i class="fas fa-plus"></i>
+                                    <p>New tag</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
@@ -206,27 +234,27 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <div class="container-fluid mt-3">
-                    @if ( $errors->any() )
-                        <div class="alert alert-danger">
-                            <div class="container">
-                                <ul class="list-unstyled mb-0">
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                    @endif
-                    @if ( session()->has('success') )
-                        <div class="alert alert-success">
-                            <div class="container">
-                                {{ session('success') }}
-                            </div>
-                        </div>
-                    @endif
+            @if ( $errors->any() )
+                <div class="alert alert-danger">
+                    <div class="container">
+                        <ul class="list-unstyled mb-0">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            @endif
+            @if ( session()->has('success') )
+                <div class="alert alert-success">
+                    <div class="container">
+                        {{ session('success') }}
+                    </div>
+                </div>
+            @endif
         </div>
-        @yield('content')
-        <!-- /.content-wrapper -->
+    @yield('content')
+    <!-- /.content-wrapper -->
     </div>
 
     <footer class="main-footer">
@@ -248,13 +276,13 @@
 <script src="{{ asset('assets/admin/js/admin.js') }}"></script>
 
 <script>
-    $('.nav-sidebar a').each(function(){
-       let location = window.location.protocol + '//' + window.location.host + window.location.pathname;
-       let link = this.href;
-       if (link == location){
-           $(this).addClass('active');
-           $(this).closest('.has-treeview').addClass('menu-open');
-       }
+    $('.nav-sidebar a').each(function () {
+        let location = window.location.protocol + '//' + window.location.host + window.location.pathname;
+        let link = this.href;
+        if (link == location) {
+            $(this).addClass('active');
+            $(this).closest('.has-treeview').addClass('menu-open');
+        }
     });
 </script>
 </body>
