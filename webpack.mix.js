@@ -15,6 +15,8 @@ const mix = require('laravel-mix');
 mix.sass('resources/assets/admin/css/custom.scss', '../resources/assets/admin/css/custom.css')
 mix.styles([
     'resources/assets/admin/plugins/fontawesome-free/css/all.css',
+    'resources/assets/admin/plugins/select2/css/select2.css',
+    'resources/assets/admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.css',
     'resources/assets/admin/css/adminlte.css',
     'resources/assets/admin/css/custom.css',
 ], 'public/assets/admin/css/admin.css');
@@ -26,8 +28,10 @@ mix.copy('resources/assets/admin/css/adminlte.css.map', 'public/assets/admin/css
 mix.scripts([
     'resources/assets/admin/plugins/jquery/jquery.js',
     'resources/assets/admin/plugins/bootstrap/js/bootstrap.bundle.js',
+    'resources/assets/admin/plugins/select2/js/select2.full.js',
     'resources/assets/admin/js/adminlte.js',
     'resources/assets/admin/js/demo.js',
+    'resources/assets/admin/js/custom.js',
 ], 'public/assets/admin/js/admin.js');
 mix.copy('resources/assets/admin/plugins/jquery/jquery.min.map', 'public/assets/admin/js/jquery.min.map');
 mix.copy('resources/assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js.map', 'public/assets/admin/js/bootstrap.bundle.min.js.map');

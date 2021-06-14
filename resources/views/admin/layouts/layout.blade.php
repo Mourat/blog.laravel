@@ -179,7 +179,30 @@
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('posts.index') }}" class="nav-link">
+                            <i class="fas fa-file-alt fa-fw"></i>
+                            <p>
+                                Posts
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('posts.index') }}" class="nav-link">
+                                    <i class="fas fa-list fa-fw"></i>
+                                    <p>Posts</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('posts.create') }}" class="nav-link">
+                                    <i class="fas fa-plus fa-fw"></i>
+                                    <p>New post</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="{{ route('categories.index') }}" class="nav-link">
                             <i class="fas fa-archive fa-fw"></i>
                             <p>
                                 Categories
@@ -202,7 +225,7 @@
                         </ul>
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('tags.index') }}" class="nav-link">
                             <i class="fas fa-tags"></i>
                             <p>
                                 Tags
@@ -247,9 +270,10 @@
             @endif
             @if ( session()->has('success') )
                 <div class="alert alert-success">
-                    <div class="container">
-                        {{ session('success') }}
-                    </div>
+                    {{ session('success') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
                 </div>
             @endif
         </div>
