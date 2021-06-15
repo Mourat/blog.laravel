@@ -2,6 +2,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/phpstorm,laravel
 # Edit at https://www.toptal.com/developers/gitignore?templates=phpstorm,laravel
 
+public/uploads/
+
 ### Laravel ###
 /vendor/
 node_modules/
