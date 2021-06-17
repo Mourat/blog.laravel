@@ -8,9 +8,22 @@ use App\Http\Requests\StorePost;
 use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
+
+    public static function uploadImage(Request $request, $image = null){
+        if ($request->hasFile('thumbnail')){
+            if ($image){
+                Storage::delete($image);
+            }
+            $folder = date('Y/m');
+            return $request->file('thumbnail')->store("images/{$folder}");
+        }
+        return null;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -43,10 +56,7 @@ class PostController extends Controller
     public function store(StorePost $request)
     {
         $data = $request->all();
-        if ($request->hasFile('thumbnail')){
-            $folder = date('Y/m');
-            $data['thumbnail'] = $request->file('thumbnail')->store("images/{$folder}");
-        }
+        $data['thumbnail'] = $this->uploadImage($request);
         $post = Post::create($data);
         $post->tags()->sync($request->tags);
 
@@ -61,7 +71,10 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.posts.edit');
+        $post = Post::find($id);
+        $categories = Category::pluck('title', 'id')->all();
+        $tags = Tag::pluck('title', 'id')->all();
+        return view('admin.posts.edit', compact('post','categories', 'tags'));
     }
 
     /**
@@ -73,6 +86,11 @@ class PostController extends Controller
      */
     public function update(StorePost $request, $id)
     {
+        $post = Post::find($id);
+        $data = $request->all();
+        $data['thumbnail'] = $this->uploadImage($request, $post->thumbnail);
+        $post->update($data);
+        $post->tags()->sync($request->tags);
         return redirect(route('posts.index'))->with('success', 'Post modified successfully');
     }
 
@@ -84,7 +102,10 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        Category::destroy($id);
+        $post = Post::find($id);
+        $post->tags()->sync([]);
+        Storage::delete($post->thumbnail);
+        $post->delete();
         return redirect()->route('posts.index')->with('success', 'Post has been removed');
     }
 }
